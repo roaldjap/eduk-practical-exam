@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Edukasyon.PH - Technical Vocational Courses</title>
 
@@ -21,22 +22,29 @@
   <script type="text/javascript">
   $(document).ready(function(){
 
-    $('.navbar-search-icon').click(function(e){
+    $('.navbar-search-icon').on("click touchstart", function(e){
       e.preventDefault();
       $( ".nav-search-container" ).toggleClass('--open');
+      if( $(".navbar-right").hasClass("--open") ){
+        $( ".navbar-right" ).removeClass('--open');
+      }
     });
 
-    $('.navbar-toggle').click(function(e){
+    $('.navbar-toggle').on("click touchstart", function(e){
+      e.preventDefault();
       $( ".navbar-right" ).toggleClass('--open');
-      console.log('test');
+      if( $(".nav-search-container").hasClass("--open") ){
+        $( ".nav-search-container" ).removeClass('--open');
+      }
     });
+
   });
   </script>
 
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
+  <nav data-headroom class="navbar navbar-default navbar-fixed-top" id="mainNav">
     <div class="navbar-padding">
         <div class="navbar-header">
             <a class="navbar-brand" href="/" title="Edukasyon.ph">

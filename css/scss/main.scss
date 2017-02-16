@@ -36,6 +36,13 @@ body {
     padding: 22px 10px 23px;
 }
 
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover{
+  color: #fff;
+  background: #fd8204;
+}
+
 .navbar-default {
     background-color: #ffffff;
 
@@ -47,6 +54,15 @@ body {
         font-size: 13px;
         font-weight: 400;
         @include transition(all 0.15s ease-in-out !important);
+
+        &:hover{
+          color: #ff9c0a;
+        }
+
+        &:active, .active{
+          background: #ff9c0a;
+          color: #fff;
+        }
 
         @media only screen and (max-width : 992px) {
           padding-left: 15px;
@@ -73,13 +89,21 @@ body {
     display: block;
     border-right: 1px solid #eee;
     border-left: 1px solid #eee;
-    padding::16px 20px;
+    padding: 17px 22px;
     cursor: pointer;
 
     i.mobile {
         line-height: 2;
         font-size: 17px;
         color: #fd8204;
+    }
+
+    &:hover{
+      background: #ffa31b !important;
+
+      i{
+        color: #fff;
+      }
     }
 }
 
@@ -264,6 +288,11 @@ footer {
     font-size: 15px;
     color: #ffa31b;
     border: none;
+    cursor: pointer;
+    &:hover{
+      color: #fff;
+      background: #ffa31b !important;
+    }
   }
 
   .navbar-padding{
@@ -282,6 +311,13 @@ footer {
     .search-toggle{
       float: right;
       display: inline-block;
+      &:hover{
+        background: #ffa31b !important;
+
+        i{
+          color: #fff;
+        }
+      }
     }
   }
 
@@ -319,6 +355,13 @@ footer {
 
   .nav-search-container{
       width: 100%;
+  }
+
+  .navbar-nav>li>.dropdown-menu{
+    position: relative;
+    box-shadow: none;
+    border: none;
+    width: 100%;
   }
 }
 
