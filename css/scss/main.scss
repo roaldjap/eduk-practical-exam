@@ -188,7 +188,7 @@ footer {
   top: 0;
   @include transition(all 0.15s ease-in-out);
 
-  &.--open{
+  &.-open{
     top: 68px;
   }
 
@@ -337,7 +337,7 @@ footer {
     float: right;
     overflow: auto;
 
-    &.--open{
+    &.-open{
       left: 25%;
     }
 

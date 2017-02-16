@@ -24,17 +24,18 @@
 
     $('.navbar-search-icon').on("click touchstart", function(e){
       e.preventDefault();
-      $( ".nav-search-container" ).toggleClass('--open');
-      if( $(".navbar-right").hasClass("--open") ){
-        $( ".navbar-right" ).removeClass('--open');
+      $( ".nav-search-container" ).toggleClass('-open');
+      if( $(".navbar-right").hasClass("-open") ){
+        $( ".navbar-right" ).removeClass('-open');
       }
     });
 
     $('.navbar-toggle').on("click touchstart", function(e){
       e.preventDefault();
-      $( ".navbar-right" ).toggleClass('--open');
-      if( $(".nav-search-container").hasClass("--open") ){
-        $( ".nav-search-container" ).removeClass('--open');
+
+      $( ".navbar-right" ).toggleClass('-open');
+      if( $(".nav-search-container").hasClass("-open") ){
+        $( ".nav-search-container" ).removeClass('-open');
       }
     });
 
