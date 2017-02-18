@@ -13,13 +13,21 @@
   <link rel="stylesheet" href="bower_components/material-icons/css/material-icons.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/EasyAutocomplete/dist/easy-autocomplete.css">
 
   <link rel="stylesheet" href="css/style.min.css">
 
   <!-- JS -->
+
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js"></script>
+
   <script type="text/javascript">
+  function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   $(document).ready(function(){
 
     $('.navbar-search-icon').on("click touchstart", function(e){
@@ -39,8 +47,64 @@
       }
     });
 
+    $.getJSON('json/regions.json', function(data){
+      $.each(data, function(i, regions){
+        $("#location-search").append("<option value='"+regions.key+"'>"+ regions.name +"</option>");
+
+      });
+    });
+
+    $.getJSON('json/sample-data.json', function(data){
+      $.each(data, function(i, schools){
+
+        name = schools.name.toLowerCase();
+        address = schools.address;
+        region = schools.region;
+        program = schools.program;
+
+        template = "<div class='tech-voc' data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"' ><div class='col-lg-4'><ul>";
+        template += "<li class='name'>"+ name +"</li>";
+        template += "<li class='address'>"+ address +"</li>";
+        template += "<li class='region'>"+ region +"</li>";
+        template += "<li class='program'>"+ program +"</li>";
+        template += "</ul></div></div>";
+
+        $('.tech-voc-container').append(template);
+      });
+
+
+      techVoc = $(".tech-voc");
+      for(var i = 0; i < techVoc.length; i+=3) {
+         techVoc.slice(i, i+3).wrapAll("<div class='row'></div>");
+      }
+    });
+
+
+    $("#name-search").easyAutocomplete({
+        url: "json/sample-data.json",
+        getValue: "name",
+        list: {
+          match: {
+            enabled: true
+          }
+        },
+
+        template: {
+            type: "custom",
+            method: function(value, item) {
+                return "<span class='blank-logo'><img src='images/icon.png'></span><div class='row-span'></span><span class='school-value'>"+ value +"</span><span class='region-program'>"+ item.region + "—"+ item.program +"</span></div>";
+
+                // return "<span class='blank-logo'><img src='images/icon.png'></span><div class='row-span'></span><span class='school-value'>"+ value +"</span>";
+            }
+        }
+    });
+
+
   });
   </script>
+
+  <!-- <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script> -->
 
 </head>
 <body>
@@ -178,9 +242,56 @@
   <!-- End : Custom Search -->
 
   <!-- Content -->
-  <section class>
+  <div class="content">
+    <section id="main-search-bar">
+      <div class="container">
+      <div class="row">
+          <div class="page-header-title">
+          <h1>Technical-Vocational Centers</h1>
+          <p class="page-header-subtitle mb20">
+              Apply to TESDA-accredited Tech-Vocational Schools
+          </p>
+          <form id="schools-search" class="input-group mt20" >
+              <input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="name-search" class="form-control" placeholder="Enter school name">
+                <span class="input-group-btn dropdown btn-select">
+                    <select name="program_level" id="location-search" class="form-control">
+                        <option value="">Anywhere</option>
+                    </select>
+                </span>
+                <span class="input-group-btn dropdown btn-select">
+                    <select name="program_level" id="type-search" class="form-control">
+                        <option value="senior">Senior High School</option>
+                        <option value="college">College / University</option>
+                        <option value="graduate">Graduate Studies</option>
+                        <option selected="selected" value="tech">Tech-Vocational Center</option>
+                        <option value="learning">Learning Centers</option>
+                    </select>
+                </span>
+                <span class="input-group-btn">
+                  <button name="button" type="submit" class="btn btn-search" ng-click="search()">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+          </form>
+          </div>
+      </div>
+      </div>
+    </section>
 
-  </section>
+
+    <section class="container" id="tech-voc-centers">
+      <div class="col-lg-2">
+        Test
+      </div>
+      <div class="col-lg-10">
+        <div class="tech-voc-container">
+        </div>
+      </div>
+    </section>
+
+
+  </div>
   <!-- End : Content -->
 
   <!-- Footer -->

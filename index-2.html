@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edukasyon.PH - Technical Vocational Courses</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Rubik|Poppins:300">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/material-icons/css/material-icons.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <!-- JS -->
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.navbar-search-icon').on("click touchstart", function(e){
+      e.preventDefault();
+      $( ".nav-search-container" ).toggleClass('-open');
+      if( $(".navbar-right").hasClass("-open") ){
+        $( ".navbar-right" ).removeClass('-open');
+      }
+    });
+
+    $('.navbar-toggle').on("click touchstart", function(e){
+      e.preventDefault();
+
+      $( ".navbar-right" ).toggleClass('-open');
+      if( $(".nav-search-container").hasClass("-open") ){
+        $( ".nav-search-container" ).removeClass('-open');
+      }
+    });
+
+    $.getJSON('json/regions.json', function(data){
+      $.each(data, function(i, regions){
+        $("#location-search").append("<option value='"+regions.key+"'>"+ regions.name +"</option>");
+
+      });
+    });
+
+  });
+  </script>
+
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+</head>
+<body>
+  <!-- Navigation -->
+  <nav data-headroom class="navbar navbar-default navbar-fixed-top" id="mainNav">
+    <div class="navbar-padding">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" title="Edukasyon.ph">
+                <img src="images/logo.png" alt="Edukasyonph logo orange">
+            </a>
+            <div class="navbar-nav toggle-buttons">
+                <div class="navbar-toggle">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <a class="navbar-search-icon search-toggle" id="uni_search_btn">
+                    <i class="fa fa-search mobile"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="navbar-nav navbar-right">
+            <div class="navbar-menu fadein" id="main-nav">
+                <ul class="nav navbar-nav navbar-items">
+                    <li class="navbar-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button">
+    Search &amp; Apply
+    </a>
+                        <ul class="dropdown-menu" id="nav-search-item">
+                            <li class="dropdown">
+                                <a aria-expanded="false" aria-haspopup="true" class="dropdown-item dropdown-toggle" data-toggle="dropdown" role="button">
+    Schools
+    </a>
+                                <ul class="dropdown-menu sub-menu" id="nav-schools">
+                                    <li>
+                                        <a class="dropdown-item" href="/schools/senior-high-schools">Senior High School</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/schools/college">College</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" aria-haspopup="true" class="dropdown-item dropdown-toggle" data-toggle="dropdown" role="button">
+    Courses
+    </a>
+                                <ul class="dropdown-menu sub-menu" id="nav-courses">
+                                    <li>
+                                        <a class="dropdown-item" href="/courses/senior-high-tracks">Senior High School Tracks</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/courses/college">College Programs</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/scholarships">Scholarships</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/study-abroad">Study Abroad</a>
+                    </li>
+                    <li class="dropdown navbar-item">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button">
+    Advice
+    </a>
+                        <ul class="dropdown-menu" id="nav-advice">
+                            <li>
+                                <a class="dropdown-item" href="/discover-careers">Choose your career</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="https://blog.edukasyon.ph/category/expert-guide" target="_blank">Expert Guide</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="https://blog.edukasyon.ph" target="_blank">Daily Advice</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="https://blog.edukasyon.ph/category/study-abroad/" target="_blank">Studying Abroad</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown navbar-item">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#0" role="button">
+    About Us
+    </a>
+                        <ul class="dropdown-menu" id="nav-aboutus">
+                            <li>
+                                <a class="dropdown-item" href="/about-us">Advocacy</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/team">Team</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/partners-and-testimonials">Partners &amp; Testimonials</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/join-us">Join Us</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="https://blog.edukasyon.ph/category/news/">What’s New</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="btn-login" data-target="#signin_modal" data-toggle="modal" href="#signin_modal" id="signin">Login</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="btn-register" id="register" href="/users/sign_up">Register for free</a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </nav>
+  <!-- End : Navigation -->
+
+  <!-- Custom Search -->
+  <div class="col-lg-12 nav-search-container form-group">
+    <form id="generic-search" class="input-group" action="/school/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+        <span class="input-group-btn dropdown btn-select">
+            <select name="type" id="schools-search-options" class="form-control generic-search-type">
+                <option selected="selected" value="school">Schools</option>
+                <option value="course">Courses</option>
+                <option value="scholarship">Scholarships</option>
+                <option value="abroad">Study Abroad</option>
+            </select>
+        </span>
+        <div class="navbar-search-icon">
+            <i class="fa fa-search"></i>
+        </div>
+        <input id="search-input" class="form-control input-grp-btn" name="q" placeholder="Search" type="search">
+    </form>
+  </div>
+  <!-- End : Custom Search -->
+
+  <!-- Content -->
+  <div class="content" ng-app="instantSearch" ng-controller="instantSearchCtrl">
+    <section class="container" id="main-search-bar">
+      <div class="row">
+          <div class="page-header-title">
+          <h1>Technical-Vocational Centers</h1>
+          <p class="page-header-subtitle mb20">
+              Apply to TESDA-accredited Tech-Voc schools
+          </p>
+          <form id="schools-search" class="input-group mt20" >
+              <input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" class="form-control" placeholder="Enter school name" ng-model="searchString">
+                <span class="input-group-btn dropdown btn-select">
+                    <select name="program_level" id="location-search" class="form-control">
+                      <option value="">Anywhere</option>
+                    </select>
+                </span>
+                <span class="input-group-btn dropdown btn-select">
+                    <select name="program_level" id="type-search" class="form-control">
+                        <option value="senior high">Senior High School</option>
+                        <option value="college">College / University</option>
+                        <option value="graduate studies">Graduate Studies</option>
+                        <option selected="selected" value="techvoc">Tech-Voc</option>
+                        <option value="learning centers">Learning Centers</option>
+                    </select>
+                </span>
+                <span class="input-group-btn">
+                  <button name="button" type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                </span>
+          </form>
+          </div>
+      </div>
+
+    </section>
+
+
+    <section class="container" id="tech-voc-centers">
+      <ul>
+  			<li ng-repeat="i in items | searchFor:searchString">
+  				<a href="{{i.url}}"><img ng-src="{{i.image}}" /></a>
+  				<p>{{i.title}}</p>
+  			</li>
+  		</ul>
+
+    </section>
+
+
+  </div>
+  <!-- End : Content -->
+
+  <!-- Footer -->
+  <footer>
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-3 mb20">
+                  <h5>EDUKASYON.PH</h5>
+                  <hr>
+                  <p>Edukasyon.ph believes that every Filipino deserves to get a quality, relevant education that will prepare them for their dream career. We bring you choice, advice, and convenience – all for free.</p>
+                  <p>Follow us on:</p>
+                  <ul class="list-inline">
+                      <li>
+                          <a href="https://www.facebook.com/edukasyonphl/" target="_blank">
+                              <i aria-hidden="true" class="fa fa-2x fa-facebook"></i>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="https://twitter.com/edukasyonphl" target="_blank">
+                              <i aria-hidden="true" class="fa fa-2x fa-twitter"></i>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="https://www.instagram.com/edukasyonphl/" target="_blank">
+                              <i aria-hidden="true" class="fa fa-2x fa-instagram"></i>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 mb20">
+                  <h5>Contact us</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <p>Unit 5K, 100 C. Palanca St., Legaspi Village, Makati City, Metro Manila, Philippines 1229</p>
+                      </li>
+                      <li>
+                          <a href="mailto:support@edukasyon.ph" target="_blank">support@edukasyon.ph</a>
+                      </li>
+                      <li>
+                          <p>(+632) 823-2701</p>
+                      </li>
+                  </ul>
+                  <hr>
+                  <ul>
+                      <li>
+                          <h5 class="mb0 mt20">For Study Abroad inquiries:</h5>
+                          <a href="mailto:studyabroad@edukasyon.ph" target="_blank">studyabroad@edukasyon.ph</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 mb20">
+                  <h5>About us</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <a href="/about-us">Advocacy</a>
+                      </li>
+                      <li>
+                          <a href="/about-us">Team</a>
+                      </li>
+                      <li>
+                          <a href="/about-us">Partners &amp; Testimonials</a>
+                      </li>
+                      <li>
+                          <a href="/join-us">Join Us</a>
+                      </li>
+                      <li>
+                          <a href="/about-us">What's New</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 mb20">
+                  <h5>Advice</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <a href="/discover-careers">Choose Your Career</a>
+                      </li>
+                      <li>
+                          <a target="_blank" href="http://blog.edukasyon.ph">Expert Guide</a>
+                      </li>
+                      <li>
+                          <a target="_blank" href="http://blog.edukasyon.ph">Daily Advice</a>
+                      </li>
+                      <li>
+                          <a target="_blank" href="http://blog.edukasyon.ph/category/study-abroad/">Studying Abroad</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-3 mb20">
+                  <h5>Courses</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <a href="/courses/senior-high-tracks">Senior High School Tracks</a>
+                      </li>
+                      <li>
+                          <a href="/courses/college">College Programs</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 mb20">
+                  <h5>Schools</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <a href="/schools/senior-high-schools">Senior High Schools</a>
+                      </li>
+                      <li>
+                          <a href="/schools/college">Colleges &amp; Universities</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 mb20">
+                  <h5>Study Abroad</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <a href="/study-abroad/foreign-schools">Partner Colleges &amp; Universities Abroad</a>
+                      </li>
+                      <li>
+                          <a href="/study-abroad/internationally-accredited-local-schools">Internationally Accredited Local Schools</a>
+                      </li>
+                      <li>
+                          <a href="/study-abroad/countries">List of Countries</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-sm-3 mb20">
+                  <h5>Others</h5>
+                  <hr>
+                  <ul>
+                      <li>
+                          <a href="/faq">FAQ</a>
+                      </li>
+                      <li>
+                          <a href="/sitemap">Sitemap</a>
+                      </li>
+                      <li>
+                          <a href="/disclaimer">Disclaimer</a>
+                      </li>
+                      <li>
+                          <a href="/privacy-policy">Privacy Policy</a>
+                      </li>
+                      <li>
+                          <a href="/intellectual-property">Intellectual Property</a>
+                      </li>
+                      <li>
+                          <a href="/community-guidelines">Community Guidelines</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="container no-padding copyrights">
+          <div class="col-sm-12 txt-center">
+              <p>© 2017 Edukasyon.ph is operated by ENGADIN CORPORATION. All rights reserved.</p>
+          </div>
+      </div>
+  </footer>
+  <!-- End : Footer -->
+</body>
+</html>
