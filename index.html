@@ -22,6 +22,7 @@
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js"></script>
+  <script type="text/javascript" src="bower_components/isotope/dist/isotope.pkgd.min.js"></script>
 
   <script type="text/javascript">
   function capitalizeFirstLetter(string) {
@@ -62,7 +63,7 @@
         region = schools.region;
         program = schools.program;
 
-        template = "<div class='tech-voc' data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"' ><div class='col-lg-4'><ul class='item'>";
+        template = "<div class='tech-voc' data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"' ><div class='col-lg-4 grid-item'><ul class='item'>";
         template += "<li class='name'>"+ name +"</li>";
         template += "<li class='address'>"+ address +"</li><hr class='divider'/>";
         template += "<li class='extra-details-wrap'><ul class='extra-details'><li><span class='region'> Region "+ region +"</li></span>";
@@ -74,11 +75,15 @@
       });
 
 
-      techVoc = $(".tech-voc");
-      for(var i = 0; i < techVoc.length; i+=3) {
-         techVoc.slice(i, i+3).wrapAll("<div class='row'></div>");
-      }
+      // techVoc = $(".tech-voc");
+      // for(var i = 0; i < techVoc.length; i+=3) {
+      //    techVoc.slice(i, i+3).wrapAll("<div class='row'></div>");
+      // }
+
+      // $grid.isotope();
     });
+
+
 
 
     $("#name-search").easyAutocomplete({
@@ -95,13 +100,62 @@
             method: function(value, item) {
                 return "<span class='blank-logo'><img src='images/icon.png'></span><div class='row-span'></span><span class='school-value'>"+ value +"</span><span class='region-program'>"+ item.region + "—"+ item.program +"</span></div>";
 
-                // return "<span class='blank-logo'><img src='images/icon.png'></span><div class='row-span'></span><span class='school-value'>"+ value +"</span>";
             }
         }
     });
 
 
   });
+
+  $(window).load(function(){
+      var $grid = $('.tech-voc-container');
+      var qsRegex;
+
+      $('#schools-search').submit(function(){
+        return false
+      });
+
+      $('#schools-search .btn-search').click(function(){
+          qsRegex = new RegExp( $('#name-search').val(), 'gi' );
+          $grid.isotope();
+
+          if ( $grid.height() === 0 ) {
+              console.log("wala!");
+          }
+      });
+
+      $grid.isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'masonry',
+        filter: function(){
+          var $this = $(this);
+          var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+          // var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
+          // return searchResult && buttonResult;
+            // console.log($this.height());
+
+          return searchResult;
+        }
+      });
+
+  });
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce( fn, threshold ) {
+    var timeout;
+    return function debounced() {
+      if ( timeout ) {
+        clearTimeout( timeout );
+      }
+      function delayed() {
+        fn();
+        timeout = null;
+      }
+      timeout = setTimeout( delayed, threshold || 100 );
+    }
+  }
+
+
   </script>
 
   <!-- <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
@@ -253,8 +307,7 @@
               Apply to TESDA-accredited Tech-Vocational Schools
           </p>
           <form id="schools-search" class="input-group mt20" >
-              <input name="utf8" type="hidden" value="✓">
-              <input type="text" name="q" id="name-search" class="form-control" placeholder="Enter school name">
+              <input type="text" id="name-search" class="form-control" placeholder="Enter school name">
                 <span class="input-group-btn dropdown btn-select">
                     <select name="program_level" id="location-search" class="form-control">
                         <option value="">Anywhere</option>
@@ -285,7 +338,7 @@
       <div class="col-lg-2">
         Test
       </div>
-      <div class="col-lg-10">
+      <div class=".grid-sizer col-lg-10">
         <div class="tech-voc-container">
         </div>
       </div>

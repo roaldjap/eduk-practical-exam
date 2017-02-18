@@ -471,6 +471,9 @@ footer {
       background: #fff;
       border-radius: 3px;
       box-shadow: #dedede 0px 1px 1px;
+      width: 285px;
+      max-width: 285px;
+      min-width: 285px;
     }
     .name{
       text-transform: uppercase;
