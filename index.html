@@ -62,11 +62,12 @@
         region = schools.region;
         program = schools.program;
 
-        template = "<div class='tech-voc' data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"' ><div class='col-lg-4'><ul>";
+        template = "<div class='tech-voc' data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"' ><div class='col-lg-4'><ul class='item'>";
         template += "<li class='name'>"+ name +"</li>";
-        template += "<li class='address'>"+ address +"</li>";
-        template += "<li class='region'>"+ region +"</li>";
-        template += "<li class='program'>"+ program +"</li>";
+        template += "<li class='address'>"+ address +"</li><hr class='divider'/>";
+        template += "<li class='extra-details-wrap'><ul class='extra-details'><li><span class='region'> Region "+ region +"</li></span>";
+        template += "<li><span class='program'>"+ program +"</span></li></ul></li>";
+        template += "<li class='button-wrap'><button>See More</button></li>";
         template += "</ul></div></div>";
 
         $('.tech-voc-container').append(template);

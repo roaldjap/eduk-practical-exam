@@ -85,6 +85,7 @@ color: #999 !important;
 body {
     font-family: "Rubik", sans-serif;
     margin-top: 67px;
+    background: #eee;
 }
 
 .navbar {
@@ -459,20 +460,24 @@ footer {
   }
 
   .tech-voc{
-    ul{
+    ul.item{
       list-style-type: none;
       margin: 0;
       padding: 20px;
+      padding-bottom: 15px;
       margin-bottom: 20px;
       min-height: 146px;
-      background: #eee;
       border-radius: 3px;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: #dedede 0px 1px 1px;
     }
     .name{
       text-transform: uppercase;
       font-weight: bold;
       font-size: 16px;
       margin-bottom: 20px;
+      color: #ff9800;
     }
 
     .address{
@@ -482,15 +487,57 @@ footer {
     }
 
     .region{
-      color: red;
 
     }
 
+    hr.divider{
+      margin-top: 0px;
+      margin-bottom: 15px;
+    }
+
     .region, .program{
+      color: #909090;
+      font-size: 11px;
+      letter-spacing: .5px;
       // display: none
       // position: absolute;
       // display: inline-block;
     }
+
+    // .button{
+    //   position: absolute;
+    //   bottom: 36px;
+    //   right: 35px;
+    //
+    //
+    // }
+
+    .extra-details-wrap{
+      display: inline-block;
+      width: 50%;
+      vertical-align: middle;
+    }
+
+    .extra-details{
+      list-style: none;
+      padding: 0;
+
+    }
+
+    .button-wrap{
+      display: inline-block;
+      float: right;
+    }
+
+    button{
+      color: #fff;
+      border: 0px;
+      border-radius: 3px;
+      padding: 10px 30px;
+      font-size: 13px;
+      background: #ff9800;
+    }
+
   }
 }
 
