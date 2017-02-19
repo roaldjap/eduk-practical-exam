@@ -732,4 +732,12 @@ footer {
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {}
 /* Custom, iPhone Retina */
-@media only screen and (max-width : 320px) {}
+@media only screen and (max-width : 320px) {
+  .grid-item{
+      padding: 0;
+  }
+  
+  #tech-voc-centers .tech-voc ul.item{
+    width: 266px;
+  }
+}
