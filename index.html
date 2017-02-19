@@ -25,9 +25,6 @@
   <script type="text/javascript" src="bower_components/isotope/dist/isotope.pkgd.min.js"></script>
 
   <script type="text/javascript">
-  function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 
   $(document).ready(function(){
 
@@ -58,12 +55,15 @@
     $.getJSON('json/sample-data.json', function(data){
       $.each(data, function(i, schools){
 
-        name = schools.name.toLowerCase();
-        address = schools.address;
-        region = schools.region;
-        program = schools.program;
+        var name = schools.name.toLowerCase();
+        var address = schools.address;
+        var region = schools.region;
+        var program = schools.program;
+        var shortenProgram = schools.shortenProgram;
+        var dataAttrs = "data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"'";
+        var searchClass = " " + region + " " + shortenProgram;
 
-        template = "<div class='tech-voc' data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"' ><div class='col-lg-4 grid-item'><ul class='item'>";
+        var template = "<div class='tech-voc'><div class='col-lg-4 grid-item"+ searchClass +"'><ul class='item'>";
         template += "<li class='name'>"+ name +"</li>";
         template += "<li class='address'>"+ address +"</li><hr class='divider'/>";
         template += "<li class='extra-details-wrap'><ul class='extra-details'><li><span class='region'> Region "+ region +"</li></span>";
@@ -104,24 +104,48 @@
         }
     });
 
-
   });
 
   $(window).load(function(){
       var $grid = $('.tech-voc-container');
       var qsRegex;
+      var locationFilter;
+      var programFilter;
 
+      // Prevent from submitting the form.
       $('#schools-search').submit(function(){
         return false
       });
 
       $('#schools-search .btn-search').click(function(){
+
           qsRegex = new RegExp( $('#name-search').val(), 'gi' );
+
+          locationFilter =  "." + $('#location-search').val();
+          if (locationFilter === ".*") {
+            locationFilter = "*";
+          }
+
+          programFilter =  "." + $('#type-search').val();
+          if (programFilter === ".*") {
+            programFilter = "*";
+          }
+
+          // Call Isotopes
           $grid.isotope();
 
-          if ( $grid.height() === 0 ) {
-              console.log("wala!");
+          // Remove 'Not found' message if search find something.
+          if($('.not-found')){
+            $('.not-found').remove();
           }
+
+          // Show 'Not Found' message
+          if ( $grid.height() === 0 ) {
+              var template = "<h4 class='not-found'>Buti pa ang <br><span class='search'>'"+ $('#name-search').val() +"'</span><br> hinahanap mo. Ako hindi. <br> <i class='fa fa-meh-o'></i></h4>";
+
+              $('.tech-voc-container').append(template);
+          }
+
       });
 
       $grid.isotope({
@@ -130,15 +154,20 @@
         filter: function(){
           var $this = $(this);
           var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
-          // var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
-          // return searchResult && buttonResult;
-            // console.log($this.height());
+          var locationResult = locationFilter ? $this.is( locationFilter ) : true;
+          var programResult = programFilter ? $this.is( programFilter ) : true;
+          return searchResult && locationResult && programResult;
 
-          return searchResult;
+          //return searchResult;
         }
       });
 
   });
+
+  // Public functions
+  function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   // debounce so filtering doesn't happen every millisecond
   function debounce( fn, threshold ) {
@@ -310,11 +339,12 @@
               <input type="text" id="name-search" class="form-control" placeholder="Enter school name">
                 <span class="input-group-btn dropdown btn-select">
                     <select name="program_level" id="location-search" class="form-control">
-                        <option value="">Anywhere</option>
+                        <option value="*">Anywhere</option>
                     </select>
                 </span>
                 <span class="input-group-btn dropdown btn-select">
                     <select name="program_level" id="type-search" class="form-control">
+                        <option value="*">All Program Level</option>
                         <option value="senior">Senior High School</option>
                         <option value="college">College / University</option>
                         <option value="graduate">Graduate Studies</option>
@@ -338,7 +368,7 @@
       <div class="col-lg-2">
         Test
       </div>
-      <div class=".grid-sizer col-lg-10">
+      <div class="col-lg-10">
         <div class="tech-voc-container">
         </div>
       </div>

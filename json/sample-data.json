@@ -3,7 +3,7 @@
     "name" : "102 GEM TRAINING CENTER INC",
     "address" : "#1115 Lirio cor. San Antonio St., Camarin, Caloocan City",
     "region" : "NCR",
-    "shorten-program" : "senior",
+    "shortenProgram" : "senior",
     "program" : "Senior High School"
   },
 
@@ -11,7 +11,7 @@
     "name" : "ABE INTERNATIONAL BUSINESS COLLEGE-CALOOCAN CAMPUS, INC.",
     "address" : "328 Big Orange Bldg. Caloocan City",
     "region" : "NCR",
-    "shorten-program" : "college",
+    "shortenProgram" : "college",
     "program" : "College / University"
   },
 
@@ -19,7 +19,7 @@
     "name" : "MANILA CENTRAL UNIVERSITY",
     "address" : "EDSA, Caloocan City",
     "region" : "NCR",
-    "shorten-program" : "graduate",
+    "shortenProgram" : "graduate",
     "program" : "Graduate School"
   },
 
@@ -27,7 +27,7 @@
     "name" : "INFORMATICS ALABANG CENTER, INC.",
     "address" : "Second Level East Wing, SM Southmall, Alabang Zapote",
     "region" : "NCR",
-    "shorten-program" : "tech",
+    "shortenProgram" : "tech",
     "program" : "Tech-Voc Center"
   },
 
@@ -35,7 +35,7 @@
     "name" : "SAM CHUNG LEARNING CENTER, INC",
     "address" : "B3 L4 Executive Village Phase VI, Almanza, Las Piñas City",
     "region" : "NCR",
-    "shorten-program" : "learning",
+    "shortenProgram" : "learning",
     "program" : "Learning Center"
   },
 
@@ -44,7 +44,7 @@
     "name" : "Region 1 School - Senior",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "I",
-    "shorten-program" : "senior",
+    "shortenProgram" : "senior",
     "program" : "Senior High School"
   },
 
@@ -52,7 +52,7 @@
     "name" : "Region 1 School - College",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "I",
-    "shorten-program" : "college",
+    "shortenProgram" : "college",
     "program" : "College / University"
   },
 
@@ -60,7 +60,7 @@
     "name" : "Region 1 School - Graduate",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "I",
-    "shorten-program" : "graduate",
+    "shortenProgram" : "graduate",
     "program" : "Graduate School"
   },
 
@@ -68,7 +68,7 @@
     "name" : "Region 1 School - Tech Voc",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "I",
-    "shorten-program" : "tech",
+    "shortenProgram" : "tech",
     "program" : "Tech-Voc Center"
   },
 
@@ -76,7 +76,7 @@
     "name" : "Region 1 School - Learning",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "I",
-    "shorten-program" : "learning",
+    "shortenProgram" : "learning",
     "program" : "Learning Center"
   },
 
@@ -84,7 +84,7 @@
     "name" : "Region 2 School - Senior",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "II",
-    "shorten-program" : "senior",
+    "shortenProgram" : "senior",
     "program" : "Senior High School"
   },
 
@@ -92,7 +92,7 @@
     "name" : "Region 3 School - College",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "III",
-    "shorten-program" : "college",
+    "shortenProgram" : "college",
     "program" : "College / University"
   },
 
@@ -100,7 +100,7 @@
     "name" : "Region 4 School - Graduate",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "IV",
-    "shorten-program" : "graduate",
+    "shortenProgram" : "graduate",
     "program" : "Graduate School"
   },
 
@@ -108,7 +108,7 @@
     "name" : "Region 5 School - Tech Voc",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "V",
-    "shorten-program" : "tech",
+    "shortenProgram" : "tech",
     "program" : "Tech-Voc Center"
   },
 
@@ -116,7 +116,7 @@
     "name" : "Region 6 School - Learning",
     "address" : "Lorem Ipsum Address Region 1",
     "region" : "VI",
-    "shorten-program" : "learning",
+    "shortenProgram" : "learning",
     "program" : "Learning Center"
   }
 ]

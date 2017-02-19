@@ -453,7 +453,20 @@ footer {
 #tech-voc-centers{
   padding-top: 40px;
   padding-bottom: 20px;
+  min-height: 250px;
 
+  .not-found{
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.5em;
+    margin: 0 auto;
+    color: #949494;
+    text-shadow: #fff 0px 1px;
+    .search{
+      color: #fd9c38;
+    }
+  }
 
   .tech-voc-container{
 
