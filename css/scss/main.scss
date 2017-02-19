@@ -484,9 +484,6 @@ footer {
       background: #fff;
       border-radius: 3px;
       box-shadow: #dedede 0px 1px 1px;
-      width: 285px;
-      max-width: 285px;
-      min-width: 285px;
     }
     .name{
       text-transform: uppercase;
@@ -513,8 +510,9 @@ footer {
 
     .region, .program{
       color: #909090;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: .5px;
+      font-family: 'Poppins', sans-serif;
       // display: none
       // position: absolute;
       // display: inline-block;

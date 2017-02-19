@@ -42,7 +42,7 @@
 
   {
     "name" : "Region 1 School - Senior",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "I",
     "shortenProgram" : "senior",
     "program" : "Senior High School"
@@ -50,7 +50,7 @@
 
   {
     "name" : "Region 1 School - College",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "I",
     "shortenProgram" : "college",
     "program" : "College / University"
@@ -58,7 +58,7 @@
 
   {
     "name" : "Region 1 School - Graduate",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "I",
     "shortenProgram" : "graduate",
     "program" : "Graduate School"
@@ -66,7 +66,7 @@
 
   {
     "name" : "Region 1 School - Tech Voc",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "I",
     "shortenProgram" : "tech",
     "program" : "Tech-Voc Center"
@@ -74,7 +74,7 @@
 
   {
     "name" : "Region 1 School - Learning",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "I",
     "shortenProgram" : "learning",
     "program" : "Learning Center"
@@ -82,7 +82,7 @@
 
   {
     "name" : "Region 2 School - Senior",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "II",
     "shortenProgram" : "senior",
     "program" : "Senior High School"
@@ -90,7 +90,7 @@
 
   {
     "name" : "Region 3 School - College",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "III",
     "shortenProgram" : "college",
     "program" : "College / University"
@@ -98,7 +98,7 @@
 
   {
     "name" : "Region 4 School - Graduate",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "IV",
     "shortenProgram" : "graduate",
     "program" : "Graduate School"
@@ -106,7 +106,7 @@
 
   {
     "name" : "Region 5 School - Tech Voc",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "V",
     "shortenProgram" : "tech",
     "program" : "Tech-Voc Center"
@@ -114,7 +114,7 @@
 
   {
     "name" : "Region 6 School - Learning",
-    "address" : "Lorem Ipsum Address Region 1",
+    "address" : "Lorem Ipsum Dolor Address here",
     "region" : "VI",
     "shortenProgram" : "learning",
     "program" : "Learning Center"

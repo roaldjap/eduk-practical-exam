@@ -63,7 +63,7 @@
         var dataAttrs = "data-name='"+ name +"'' data-address='"+ address +"' data-region='"+ region +"' data-program='"+ program +"'";
         var searchClass = " " + region + " " + shortenProgram;
 
-        var template = "<div class='tech-voc'><div class='col-lg-4 grid-item"+ searchClass +"'><ul class='item'>";
+        var template = "<div class='tech-voc'><div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 grid-item"+ searchClass +"'><ul class='item'>";
         template += "<li class='name'>"+ name +"</li>";
         template += "<li class='address'>"+ address +"</li><hr class='divider'/>";
         template += "<li class='extra-details-wrap'><ul class='extra-details'><li><span class='region'> Region "+ region +"</li></span>";
@@ -74,13 +74,12 @@
         $('.tech-voc-container').append(template);
       });
 
-
+      // Add wrapper
       // techVoc = $(".tech-voc");
       // for(var i = 0; i < techVoc.length; i+=3) {
       //    techVoc.slice(i, i+3).wrapAll("<div class='row'></div>");
       // }
 
-      // $grid.isotope();
     });
 
 
@@ -115,6 +114,13 @@
       // Prevent from submitting the form.
       $('#schools-search').submit(function(){
         return false
+      });
+
+      $('.sort-name').click(function(){
+        $grid.isotope({
+          sortBy: 'number',
+          sortAscending: false
+        })
       });
 
       $('#schools-search .btn-search').click(function(){
@@ -158,7 +164,7 @@
           var programResult = programFilter ? $this.is( programFilter ) : true;
           return searchResult && locationResult && programResult;
 
-          //return searchResult;
+          return searchResult;
         }
       });
 
@@ -344,11 +350,11 @@
                 </span>
                 <span class="input-group-btn dropdown btn-select">
                     <select name="program_level" id="type-search" class="form-control">
-                        <option value="*">All Program Level</option>
+                        <option value="*" selected="selected">All Program Level</option>
                         <option value="senior">Senior High School</option>
                         <option value="college">College / University</option>
                         <option value="graduate">Graduate Studies</option>
-                        <option selected="selected" value="tech">Tech-Vocational Center</option>
+                        <option value="tech">Tech-Vocational Center</option>
                         <option value="learning">Learning Centers</option>
                     </select>
                 </span>
@@ -365,10 +371,12 @@
 
 
     <section class="container" id="tech-voc-centers">
-      <div class="col-lg-2">
-        Test
-      </div>
-      <div class="col-lg-10">
+      <!-- <div class="col-lg-2">
+        <ul>
+          <li><button type="button" name="button" class="sort-name" >Name Ascending</button></li>
+        </ul>
+      </div> -->
+      <div class="col-lg-12">
         <div class="tech-voc-container">
         </div>
       </div>
