@@ -11,6 +11,10 @@
   font-weight: lighter;
 }
 
+.eac-item{
+  overflow: hidden;
+}
+
 .blank-logo {
   display: table-cell;
   vertical-align: middle;
@@ -357,6 +361,7 @@ footer {
     .page-header-title{
       text-align: center;
       position: relative;
+      padding: 0 35px;
 
       h1{
         font-size: 32px;
