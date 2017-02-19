@@ -116,15 +116,14 @@
         return false
       });
 
-      $('.sort-name').click(function(){
+      $('.sort-name').on( "click touchstart", function(){
         $grid.isotope({
           sortBy: 'number',
           sortAscending: false
         })
       });
 
-      $('#schools-search .btn-search').click(function(){
-
+      $('#schools-search .btn-search').on( "click touchstart", function(){
           qsRegex = new RegExp( $('#name-search').val(), 'gi' );
 
           locationFilter =  "." + $('#location-search').val();
