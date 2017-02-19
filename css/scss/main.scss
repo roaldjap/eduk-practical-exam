@@ -476,10 +476,11 @@ footer {
   }
 
   .order{
+    background: #fff;
     display: inline-block;
     width: 235px;
     margin: 0 auto;
-    padding: 0;
+    padding: 10px 0px;
     margin-top: 20px;
     border-radius: 6px;
     box-shadow: #bbbbbb 0px 5px 32px;
@@ -497,16 +498,14 @@ footer {
       margin-top: -1px;
       display: block;
       background: rgb(255, 255, 255);
-      border: 1px solid #e6e6e6;
       padding: 9px;
       color: #000;
       text-decoration: none;
       cursor: pointer;
       font-family: 'Poppins', sans-serif;
-      text-transform: uppercase;
       font-weight: bolder;
       font-size: 13px;
-      letter-spacing: 2px;
+      text-align: left;
 
       &:hover{
         color: #fff;
@@ -736,7 +735,7 @@ footer {
   .grid-item{
       padding: 0;
   }
-  
+
   #tech-voc-centers .tech-voc ul.item{
     width: 266px;
   }
