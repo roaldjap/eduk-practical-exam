@@ -349,7 +349,6 @@ footer {
     background-size: cover;
     background-attachment: fixed;
     background-image: -webkit-linear-gradient(transparent 50%, #555 100%),url('../images/tech-voc-2.jpg');
-    height: 300px;
 
     h1,
     p {
@@ -360,6 +359,7 @@ footer {
         text-align: center;
         position: relative;
         padding: 0 35px;
+        margin: 40px auto;
 
         h1 {
             font-size: 32px;
