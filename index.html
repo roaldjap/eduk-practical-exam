@@ -109,86 +109,92 @@
                 }
             });
 
-        });
 
-        $(window).load(function() {
-            var $grid = $('.tech-voc-container');
-            var qsRegex;
-            var locationFilter;
-            var programFilter;
+            $(window).load(function() {
+                var $grid = $('.tech-voc-container');
+                var qsRegex;
+                var locationFilter;
+                var programFilter;
 
-            // Prevent from submitting the form.
-            $('#schools-search').submit(function() {
-                return false
-            });
-
-            $('.desc-btn').on("click touchstart", function(e) {
-                e.preventDefault();
-                $grid.isotope({
-                    sortBy: 'name',
-                    sortAscending: false
+                // Prevent from submitting the form.
+                $('#schools-search').submit(function() {
+                    return false
                 });
 
-                $('.filter .current').text($(this).text());
-                $(".order").toggleClass('-open');
-            });
+                $('.desc-btn').on("click touchstart", function(e) {
+                    e.preventDefault();
+                    $grid.isotope({
+                        sortBy: 'name',
+                        sortAscending: false
+                    });
 
-            $('.asc-btn').on("click touchstart", function(e) {
-                e.preventDefault();
-                $grid.isotope({
-                    sortBy: 'name',
-                    sortAscending: true
+                    $('.filter .current').text($(this).text());
+                    $(".order").toggleClass('-open');
                 });
 
-                $('.filter .current').text($(this).text());
-                $(".order").toggleClass('-open');
-            });
+                $('.asc-btn').on("click touchstart", function(e) {
+                    e.preventDefault();
+                    $grid.isotope({
+                        sortBy: 'name',
+                        sortAscending: true
+                    });
 
-            $('#schools-search .btn-search').on("click touchstart", function() {
-                qsRegex = new RegExp($('#name-search').val(), 'gi');
+                    $('.filter .current').text($(this).text());
+                    $(".order").toggleClass('-open');
+                });
 
-                locationFilter = "." + $('#location-search').val();
-                if (locationFilter === ".*") {
-                    locationFilter = "*";
-                }
+                $('#schools-search .btn-search').on("click touchstart", function() {
+                    qsRegex = new RegExp($('#name-search').val(), 'gi');
 
-                programFilter = "." + $('#type-search').val();
-                if (programFilter === ".*") {
-                    programFilter = "*";
-                }
+                    locationFilter = "." + $('#location-search').val();
+                    if (locationFilter === ".*") {
+                        locationFilter = "*";
+                    }
 
-                // Call Isotopes
-                $grid.isotope();
+                    programFilter = "." + $('#type-search').val();
+                    if (programFilter === ".*") {
+                        programFilter = "*";
+                    }
 
-                // Remove 'Not found' message if search find something.
-                if ($('.not-found')) {
-                    $('.not-found').remove();
-                }
+                    // Call Isotopes
+                    $grid.isotope();
 
-                // Show 'Not Found' message
-                if ($grid.height() === 0) {
-                    var template = "<h4 class='not-found'>Buti pa ang <br><span class='search'>'" + $('#name-search').val() + "'</span><br> hinahanap mo. Ako hindi. <br> <i class='fa fa-meh-o'></i></h4>";
+                    // Remove 'Not found' message if search find something.
+                    if ($('.not-found')) {
+                        $('.not-found').remove();
+                    }
 
-                    $('.tech-voc-container').append(template);
-                }
+                    // Show 'Not Found' message
+                    if ($grid.height() === 0) {
+                        var template = "<h4 class='not-found'>Buti pa ang <br><span class='search'>'" + $('#name-search').val() + "'</span><br> hinahanap mo. Ako hindi. <br> <i class='fa fa-meh-o'></i></h4>";
 
-            });
+                        $('.tech-voc-container').append(template);
+                    }
 
-            $grid.isotope({
-                itemSelector: '.grid-item',
-                layoutMode: 'masonry',
-                filter: function() {
-                    var $this = $(this);
-                    var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
-                    var locationResult = locationFilter ? $this.is(locationFilter) : true;
-                    var programResult = programFilter ? $this.is(programFilter) : true;
-                    return searchResult && locationResult && programResult;
+                });
 
-                    return searchResult;
-                }
+                $grid.isotope({
+                    itemSelector: '.grid-item',
+                    layoutMode: 'masonry',
+                    filter: function() {
+                        var $this = $(this);
+                        var searchResult = qsRegex ? $this.text().match(qsRegex) : true;
+                        var locationResult = locationFilter ? $this.is(locationFilter) : true;
+                        var programResult = programFilter ? $this.is(programFilter) : true;
+                        return searchResult && locationResult && programResult;
+
+                        return searchResult;
+                    }
+                });
+
+                // Make sure the events are triggering
+                return true
+
             });
 
         });
+
+
 
         // Public functions
         function capitalizeFirstLetter(string) {
